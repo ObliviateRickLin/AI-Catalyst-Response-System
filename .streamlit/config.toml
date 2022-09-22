@@ -1,0 +1,14 @@
+[theme]
+base="light"
+primaryColor="#3f2d81"
+backgroundColor="#f5dcbb"
+secondaryBackgroundColor="#e4c69e"
+
+
+
+[runner]
+magicEnabled = false
+
+[server]
+maxUploadSize = 1500
+maxMessageSize = 1500
