@@ -70,7 +70,9 @@ elif bt1 or (not bt0):
     else:  
         Nanostructure = st.selectbox(
             'Nanostructure of your material',
-            ('bulk', 'nanoparticles','nanoporous','nanoshell/mesoporous','nanostructures','nanotubes')) 
+            ('bulk', 'nanoarray','nanobar','nanocluster','nanofiber','nanofilm',
+            'nanopolyhedron','nanoporous','nanoribbon','nanorod','nanosheet','nanosphere',
+            'nanovesicle','nanotube','others')) 
     Acidity = st.selectbox(
         'Acidity of the environment',
         ('acidic', 'neutral','alkaline')) 
