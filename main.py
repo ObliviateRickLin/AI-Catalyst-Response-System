@@ -6,8 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
 from streamlit_option_menu import option_menu as om
-
-from vega_datasets import data
 from sklearn.preprocessing import *
 
 from sqlcnx import *
