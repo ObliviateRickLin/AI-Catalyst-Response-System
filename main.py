@@ -1,97 +1,60 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import os
-import numpy as pd
 import joblib
 import pandas as pd
-import torch
-import torch.nn.functional as F
 import matplotlib.pyplot as plt
-from torch.utils.data import Dataset, DataLoader
-from torch import nn
+import altair as alt
+from streamlit_option_menu import option_menu as om
+
+from vega_datasets import data
 from sklearn.preprocessing import *
 
+from sqlcnx import *
 from AITF import *
+from pages import *
 
 with st.sidebar:
-    sc1, sc2 = st.columns((1, 1.5))
-    with sc1:
-        st.write("")
-        st.image("./image/cuhksz.png")
-    with sc2:
-        st.title("AI Catalyst Response System")
+    st.image("./image/cuhksz.png")
+    '''
     st.write("    ")
     st.write("    ")
-    bt0 = st.button("Introduction of the system", key=0)
-    bt1 = st.button("True or False question", key=1)
-    bt2 = st.button("Completion question", key=2)
-    bt3 = st.button("Response question", key=3)
-    bt4 = st.button("Choice question",  key=4)
-    st.write("    ")
-
+    bt0 = st.button("Introduction of the System", key=0)
+    bt1 = st.button("True or False Question", key=1)
+    bt2 = st.button("Completion Question", key=2)
+    bt3 = st.button("Response Question", key=3)
+    bt4 = st.button("Choice Question",  key=4)
+    bt5 = st.button("Research Recommendation", key=5)
+    bt6 = st.button("View our database", key=6)
+    st.write("    ") 
+    '''
+    selected = om("AI Catalyst System", 
+                    ["Introduction", 
+                    'True or False Question',
+                    'Completion Question',
+                    'Response Question',
+                    'Choice Question',
+                    'Research Recommendation',
+                    'View our database'], 
+                menu_icon =  "None",
+                icons=['house', 'ui-checks','columns','text-indent-right','ui-radios-grid','heptagon-half','eye-fill'], 
+                default_index=1)
     st.sidebar.info(
             """
            The model is still under improvement.
            Feel free to contact us at 117010254@link.cuhk.edu.cn.
-        """
+            """
     )
 
 #st.title("AI Catalyst Response System")
-if bt0:
-    st.header("AI Catalyst Response System")
-    st.write("""
-            The development of material science has long faced the problem of uncertainty. 
-            Since material science is mostly empirical, large amounts of trials and experiments are needed. 
-            Researchers usually have no idea of the performance of a catalyst until it is tested.  
-            To solve this problem, we present the AI Catalyst Response System, which consists of four parts based on the question type: 
-            True or False question, Choice question, Completion question, and Response question. 
-            The system utilizes natural language processing (NLP) and machine learning (ML) to analyze tens of thousands of published papers.  
-            """)
-elif bt1 or (not bt0):
-    st.title("True or False Question")
-    st.write("""
-            In the True or False question part, we simply categorize the catalysts into groups of “good” and “bad” based on their predicted performance. 
-            In this way, we hope to provide some references for researchers before they conduct their experiments and save valuable time and resources.
-            """)
-
-    Catalyst = st.text_input("Chemical formula of your catalyst",
-        help = "Please enter the chemical formula of your catalyst, such as Ag, Pt3Cu, NiCo2O4, or NiCo2O4@Pt.")
-    Reaction = st.selectbox(
-        'Applied Reaction',
-        ('HER', 'OER', 'ORR'))    
-    NanoBulk = st.selectbox(
-        'Is your material nano or bulk?',
-        ('nano', 'bulk'))  
-    if NanoBulk == "bulk":
-        Nanostructure = st.selectbox(
-            'Nanostructure of your material',
-            ('bulk',)) 
-    else:  
-        Nanostructure = st.selectbox(
-            'Nanostructure of your material',
-            ('bulk', 'nanoarray','nanobar','nanocluster','nanofiber','nanofilm',
-            'nanopolyhedron','nanoporous','nanoribbon','nanorod','nanosheet','nanosphere',
-            'nanovesicle','nanotube','others')) 
-    Acidity = st.selectbox(
-        'Acidity of the environment',
-        ('acidic', 'neutral','alkaline')) 
-
-    b1 = st.button("Click the button to see the result")
-    sc3, sc4 = st.columns((1,4))
-    if b1:
-        try:
-            predict = AITF(Catalyst,Reaction,NanoBulk,Nanostructure,Acidity)
-            #st.write("The performance of this reaction is predicted to be: ",predict)
-            sc3.metric("Reaction performance",predict)
-            sc4.warning("Please note that the result is for reference only.")
-        except:
-            sc3.metric("Reaction performance","Null")
-            sc4.error("Invalid catalyst: please check your input and try again.")
-    else:
-        sc3.metric("Reaction performance","Null")
-        sc4.warning("Please note that the result is for reference only.")
-        #predict_result = model.predict(predict_data)
+if selected == 'Introduction':
+    p0()
+elif selected == 'True or False Question':
+    p1()
+elif selected == 'Research Recommendation':
+    p5()
+elif selected == 'View our database':
+    p6()
 
 
 
