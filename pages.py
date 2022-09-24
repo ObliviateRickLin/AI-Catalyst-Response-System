@@ -5,7 +5,6 @@ import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
-from vega_datasets import data
 from sklearn.preprocessing import *
 
 from sqlcnx import *
