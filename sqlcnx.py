@@ -76,4 +76,31 @@ def count_journal():
     cnx.close()
     return df
 
-#[print(count_paper())]
+def count_journal_paper():
+    # Connect to server
+    import mysql.connector
+    cnx = mysql.connector.connect(
+        host="rm-wz9y2920jvc715m74mo.mysql.rds.aliyuncs.com",
+        port=3306,
+        user="qidi",
+        password="Hahaha000_",
+        database="paper_db")
+
+    # Get a cursor
+    cur = cnx.cursor()
+    # Execute a query
+    cur.execute("""
+                SELECT year, journal, COUNT(*) 
+                FROM all_data
+                GROUP BY year, journal
+                ORDER BY year;
+                """)
+
+    # Fetch one result
+    df = pd.DataFrame(cur.fetchall(),columns=["year","journal","count"])
+    df_ = df.pivot(index="year",columns="journal")
+    df_.columns = df_.columns.get_level_values(1)
+    cnx.close()
+    return df_   
+
+print(count_journal_paper())

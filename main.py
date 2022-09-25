@@ -28,7 +28,7 @@ with st.sidebar:
     st.write("    ") 
     '''
     
-    selected = om("AI Supervisor System", 
+    selected = om("AI Catalyst System", 
                     ["Introduction", 
                     'True or False Question',
                     'Completion Question',
