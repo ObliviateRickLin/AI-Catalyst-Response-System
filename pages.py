@@ -119,8 +119,8 @@ def p6():
     
     st.header("2. Visualize Database")
     sc1, sc2 = st.columns((3,1))
-    sc2.bar_chart(df_journal, x="journal", height=310)
-    sc2.area_chart(df_paper, x="year", height=250)
-    sc1.line_chart(df_paper_journal,height=590)
+    sc2.bar_chart(df_journal, x="journal", height=210)
+    sc2.area_chart(df_paper, x="year", height=150)
+    sc1.line_chart(df_paper_journal,height=390)
     #st.table(df_paper_journal)
     return 
