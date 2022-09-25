@@ -5,6 +5,7 @@ import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
+from vega_datasets import data
 from sklearn.preprocessing import *
 
 from sqlcnx import *
@@ -112,12 +113,15 @@ def p6():
     sc1.metric("Year", value= year)
     df_paper = count_paper()
     df_journal = count_journal()
+    df_paper_journal = count_journal_paper()
     st.write("   ")
     st.write("   ")
     st.write("   ")
     
-
     st.header("2. Visualize Database")
-    st.bar_chart(df_journal, x="journal")
-    st.area_chart(df_paper, x="year")
+    sc1, sc2 = st.columns((3,1))
+    sc2.bar_chart(df_journal, x="journal", height=310)
+    sc2.area_chart(df_paper, x="year", height=250)
+    sc1.line_chart(df_paper_journal,height=590)
+    #st.table(df_paper_journal)
     return 

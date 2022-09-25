@@ -12,6 +12,7 @@ from sqlcnx import *
 from AITF import *
 from pages import *
 
+st.set_page_config(layout="wide")
 with st.sidebar:
     st.image("./image/cuhksz.png")
     '''
@@ -26,7 +27,8 @@ with st.sidebar:
     bt6 = st.button("View our database", key=6)
     st.write("    ") 
     '''
-    selected = om("AI Catalyst System", 
+    
+    selected = om("AI Supervisor System", 
                     ["Introduction", 
                     'True or False Question',
                     'Completion Question',
