@@ -91,6 +91,7 @@ def p3():
     st.button("Result")
     st.text_area("Result provided")
     st.text_area("Result related")
+    return
 
 def p4():
     st.title("Choice Question")
