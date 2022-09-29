@@ -77,15 +77,16 @@ def p1():
     return
 
 def p2():
-    st.title("Completion question")
-    st.tabs(["AI Catalyst Response System", ">>","Completion question"])
+    st.title("Completion Question")
+    st.tabs(["AI Catalyst Response System", ">>","Completion Question"])
     st.write("In this part, we will output the most suited reaction or catalyst based on your input.")
     st.selectbox("Input datatype",["Catalyst","Reaction"])
     st.text_area("Output suggestions")
     return 
 
 def p3():
-    st.title("Response question")
+    st.title("Response Question")
+    st.tabs(["AI Catalyst Response System", ">>","Response Qustion"])
     st.write("In the response question, we want to explain any question that a catalyst research may encounter.")
     st.text_input("Input the question")
     st.button("Result")
