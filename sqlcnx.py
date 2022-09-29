@@ -103,4 +103,4 @@ def count_journal_paper():
     cnx.close()
     return df_   
 
-print(count_journal_paper())
+#print(count_journal_paper())

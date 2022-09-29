@@ -76,6 +76,52 @@ def p1():
     
     return
 
+def p2():
+    st.title("Completion question")
+    st.tabs(["AI Catalyst Response System", ">>","Completion question"])
+    st.write("In this part, we will output the most suited reaction or catalyst based on your input.")
+    st.selectbox("Input datatype",["Catalyst","Reaction"])
+    st.text_area("Output suggestions")
+    return 
+
+def p3():
+    st.title("Response question")
+    st.write("In the response question, we want to explain any question that a catalyst research may encounter.")
+    st.text_input("Input the question")
+    st.button("Result")
+    st.text_area("Result provided")
+    st.text_area("Result related")
+
+def p4():
+    st.title("Choice Question")
+    st.tabs(["AI Catalyst Response System", ">>","Choice Question"])
+    st.write("In the choice question, we wish to select the best catalyst for a given reaction among the given candidates.")
+    st.button("Add Catalyst")
+    Catalyst = st.text_input("Chemical formula of your catalyst",
+        help = "Please enter the chemical formula of your catalyst, such as Ag, Pt3Cu, NiCo2O4, or NiCo2O4@Pt.")
+    Reaction = st.selectbox(
+        'Applied Reaction',
+        ('HER', 'OER', 'ORR'))    
+    NanoBulk = st.selectbox(
+        'Is your material nano or bulk?',
+        ('nano', 'bulk'))  
+    if NanoBulk == "bulk":
+        Nanostructure = st.selectbox(
+            'Nanostructure of your material',
+            ('bulk',)) 
+    else:  
+        Nanostructure = st.selectbox(
+            'Nanostructure of your material',
+            ('bulk', 'nanoarray','nanobar','nanocluster','nanofiber','nanofilm',
+            'nanopolyhedron','nanoporous','nanoribbon','nanorod','nanosheet','nanosphere',
+            'nanovesicle','nanotube','others')) 
+    Acidity = st.selectbox(
+        'Acidity of the environment',
+        ('acidic', 'neutral','alkaline'))     
+    st.button("Go")
+    st.write("Result")
+    return
+
 def p5():
     st.title("Research Recommendation")
     st.tabs(["AI Catalyst Response System", ">>","Research Recommendation"])

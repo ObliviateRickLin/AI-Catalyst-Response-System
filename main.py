@@ -51,6 +51,12 @@ if selected == 'Introduction':
     p0()
 elif selected == 'True or False Question':
     p1()
+elif selected == 'Completion Question':
+    p2()
+elif selected == 'Response Question':
+    p3()
+elif selected == "Choice Question":
+    p4()
 elif selected == 'Research Recommendation':
     p5()
 elif selected == 'View our database':
